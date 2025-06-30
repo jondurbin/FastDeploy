@@ -511,12 +511,18 @@ def none_or_str(value):
     return None if value == "None" else value
 
 
-def retrieve_model_from_server(model_name_or_path, revision="master"):
+def retrieve_model_from_server(model_name_or_path: str, revision: str = "master", hf: bool = False):
     """
     Download pretrained model from AIStudio automatically
     """
     if os.path.exists(model_name_or_path):
         return model_name_or_path
+    if hf:
+        from huggingface_hub import snapshot_download
+        kwargs = {}
+        if revision != "master":
+            kwargs["revision"] = revision
+        return snapshot_download(repo_id=model_name_or_path, **kwargs)
     try:
         repo_id = model_name_or_path
         if repo_id.lower().strip().startswith("baidu"):

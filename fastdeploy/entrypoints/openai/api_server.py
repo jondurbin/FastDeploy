@@ -64,7 +64,7 @@ parser.add_argument("--controller-port",
                     help="port for controller server")
 parser = EngineArgs.add_cli_args(parser)
 args = parser.parse_args()
-args.model = retrieve_model_from_server(args.model, args.revision)
+args.model = retrieve_model_from_server(args.model, args.revision, args.hf)
 
 llm_engine = None
 

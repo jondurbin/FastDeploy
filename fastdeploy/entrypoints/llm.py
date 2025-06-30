@@ -67,9 +67,10 @@ class LLM:
         model: str,
         revision: Optional[str] = "master",
         tokenizer: Optional[str] = None,
+        hf: Optional[bool] = False,
         **kwargs,
     ):
-        model = retrieve_model_from_server(model, revision=revision)
+        model = retrieve_model_from_server(model, revision=revision, hf=hf)
         engine_args = EngineArgs(
             model=model,
             tokenizer=tokenizer,
