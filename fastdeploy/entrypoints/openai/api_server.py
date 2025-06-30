@@ -42,7 +42,7 @@ from fastdeploy.metrics.metrics import (EXCLUDE_LABELS,
                                         main_process_metrics)
 from fastdeploy.utils import (FlexibleArgumentParser, api_server_logger,
                               console_logger, is_port_available,
-                              retrive_model_from_server)
+                              retrieve_model_from_server)
 
 parser = FlexibleArgumentParser()
 parser.add_argument("--port",
@@ -64,7 +64,7 @@ parser.add_argument("--controller-port",
                     help="port for controller server")
 parser = EngineArgs.add_cli_args(parser)
 args = parser.parse_args()
-args.model = retrive_model_from_server(args.model)
+args.model = retrieve_model_from_server(args.model, args.revision)
 
 llm_engine = None
 

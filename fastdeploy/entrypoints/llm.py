@@ -29,7 +29,7 @@ from fastdeploy.engine.args_utils import EngineArgs
 from fastdeploy.engine.engine import LLMEngine
 from fastdeploy.engine.sampling_params import SamplingParams
 # from fastdeploy.entrypoints.chat_utils import ChatCompletionMessageParam
-from fastdeploy.utils import llm_logger, retrive_model_from_server
+from fastdeploy.utils import llm_logger, retrieve_model_from_server
 
 root_logger = logging.getLogger()
 for handler in root_logger.handlers[:]:
@@ -65,10 +65,11 @@ class LLM:
     def __init__(
         self,
         model: str,
+        revision: Optional[str] = "master",
         tokenizer: Optional[str] = None,
         **kwargs,
     ):
-        model = retrive_model_from_server(model)
+        model = retrieve_model_from_server(model, revision=revision)
         engine_args = EngineArgs(
             model=model,
             tokenizer=tokenizer,

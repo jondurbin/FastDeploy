@@ -310,6 +310,10 @@ class EngineArgs:
                                  type=str,
                                  default=EngineArgs.model,
                                  help="Model name or path to be used.")
+        model_group.add_argument("--revision",
+                                 type=str,
+                                 default="master",
+                                 help="Revision/branch to use when downloading the model.")
         model_group.add_argument("--model-config-name",
                                  type=nullable_str,
                                  default=EngineArgs.model_config_name,

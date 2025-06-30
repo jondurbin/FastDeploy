@@ -511,7 +511,7 @@ def none_or_str(value):
     return None if value == "None" else value
 
 
-def retrive_model_from_server(model_name_or_path, revision="master"):
+def retrieve_model_from_server(model_name_or_path, revision="master"):
     """
     Download pretrained model from AIStudio automatically
     """
